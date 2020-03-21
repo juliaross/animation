@@ -1,0 +1,45 @@
+body,html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: #BDBDBD;
+}
+
+.squares {
+  position: relative;
+  width: 250px;
+  height: 200px;
+}
+.square {
+  width: 150px;
+  height: 150px;
+  border: 4px solid #0288D1;
+  transform: rotateX(70deg) rotateY(0deg) rotateZ(40deg);
+  position: absolute;
+  left: 50px;
+  transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+  background: rgba(179,229,252, 0.5);
+}
+.square:nth-child(1) {
+  bottom: -10px;
+}
+.square:nth-child(2) {
+  bottom: 20px;
+}
+.square:nth-child(3) {
+  bottom: 50px;
+}
+.squares:hover .square:nth-child(1) {
+  transform: rotateX(70deg) rotateY(0deg) rotateZ(-55deg);
+}
+.squares:hover .square:nth-child(2) {
+  transform: rotateX(70deg) rotateY(0deg) rotateZ(-55deg) translateZ(18px);
+}
+.squares:hover .square:nth-child(3) {
+  transform: rotateX(70deg) rotateY(0deg) rotateZ(-55deg) translateZ(36px);
+}
