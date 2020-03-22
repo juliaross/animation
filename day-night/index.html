@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day and Night</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section>
+  <h1 class="title">Day and Night</h1>
+
+  <svg
+    id="picture"
+    width="360"
+    height="360"
+    viewBox="0 0 360 360"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <path class="sun"
+    d="M360 180C360 279.411 279.411 360 180 360C80.5887 360 0 279.411 0 180C0 80.5887 80.5887 0 180 0C279.411 0 360 80.5887 360 180Z"
+    fill="#FFDB7E"
+    />
+  </svg>
+
+</section>
+
+<script type="text/javascript">
+  let moonPath = "M100.5 180.501C100.5 279.913 180.5 346 180.5 360.501C81.0887 360.501 0.5 279.913 0.5 180.501C0.5 81.0902 81.0887 0.501465 180.5 0.501465C180.5 0.501465 100.5 81.0902 100.5 180.501Z"
+  let sunPath = "M360 180C360 279.411 279.411 360 180 360C80.5887 360 0 279.411 0 180C0 80.5887 80.5887 0 180 0C279.411 0 360 80.5887 360 180Z"
+
+  let picture = document.querySelector('#picture');
+  let toggle = false;
+
+  picture.addEventListener('click', () => {
+    const timeline = anime.timeline({
+      duration : 750,
+      easing: 'easeInOutExpo'
+    });
+    timeline.add({
+      targets: ".sun",
+      d: [
+        {value: toggle ? sunPath : moonPath},
+      ]
+    })
+    .add({
+      targets: "#picture",
+      rotate : 320,
+    }, "-= 350")
+    .add({
+      targets: "section",
+      backgroundColor: toggle ? "#c9e7ff" : "#333",
+      color: toggle ? "#000" : "#fff"
+    }, "-=700")
+
+    if(!toggle) {
+      toggle = true;
+    } else {
+      toggle = false
+    }
+
+  })
+
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.1.0/anime.min.js" integrity="sha256-98Q574VkbV+PkxXCKSgL6jVq9mrVbS7uCdA+vt0sLS8=" crossorigin="anonymous"></script>
+</body>
+</html>
